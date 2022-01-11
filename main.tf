@@ -1,6 +1,6 @@
 resource "aws_key_pair" "personal" {
   key_name   = "amazon-key"
-  public_key = file("/home/infracloud/.ssh/id_rsa.pub")
+  public_key = ${env.PUBLIC_KEY}
 }
 
 resource "aws_instance" "ec2-instance" {
