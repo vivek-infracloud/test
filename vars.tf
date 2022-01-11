@@ -17,6 +17,7 @@ variable "aws_region" {
 }
 
 variable "rancher_version" {
+  default = "stable"
 }
 
 variable "subnet_id_for_ec2" {
