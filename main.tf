@@ -1,6 +1,6 @@
 resource "aws_key_pair" "personal" {
   key_name   = "amazon-key"
-  public_key = ${env.PUBLIC_KEY}
+  public_key = ${secrets.PUBLIC_KEY}
 }
 
 resource "aws_instance" "ec2-instance" {
