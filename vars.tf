@@ -16,10 +16,6 @@ variable "aws_region" {
   default = "us-east-2a"
 }
 
-variable "rancher_version" {
-  default = "stable"
-}
-
 variable "subnet_id_for_ec2" {
   description = "EC2 instance to be deployed in the subnet"
   default     = "subnet-6127e62d"
