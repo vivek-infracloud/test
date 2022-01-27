@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   workflow_dispatch:
     inputs:
-      rancher_version:
+      TF_VAR_rancher_version:
         description: 'Type in rancher version to be installed'
         default: 'stable'
 
