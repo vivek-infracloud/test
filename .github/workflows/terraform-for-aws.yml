@@ -17,8 +17,6 @@ jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
-    with:
-      TF_VAR_rancher_version: ${{ github.event.inputs.rancher_version }}
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ID }}
@@ -33,6 +31,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.2.1
+        with:
+          TF_VAR_rancher_version: ${{ github.event.inputs.rancher_version }}
         
       - name: Terraform Init
         id: init
