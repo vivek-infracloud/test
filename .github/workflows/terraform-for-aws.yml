@@ -32,7 +32,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1.2.1
         with:
-          TF_VAR_rancher_version: ${{ github.event.inputs.rancher_version }}
+          rancher_version: ${{ github.event.inputs.rancher_version }}
         
       - name: Terraform Init
         id: init
