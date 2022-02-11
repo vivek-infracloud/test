@@ -21,6 +21,7 @@ resource "aws_instance" "ec2-instance" {
   }
   user_data = <<-EOF
     #!/bin/bash
+    set -x
     curl https://releases.rancher.com/install-docker/20.10.sh | sh
     sudo chmod 777 /var/run/docker.sock
     #Install Rancher
@@ -32,7 +33,7 @@ resource "aws_instance" "ec2-instance" {
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
-    
+    aws --version
     aws ec2 describe-instances --region us-east-2 --filters "Name=tag:Name,Values=vivek-rancher-Server" | grep -i publicipaddress | cut -d ":" -f 2 | cut -c 3-15 > server_url
   EOF
 }
