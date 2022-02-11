@@ -30,10 +30,10 @@ resource "aws_instance" "ec2-instance" {
     docker logs $(docker ps --format '{{.Names}}') 2>&1 | grep "Bootstrap Password" > ~/dockerpassword.txt
     #Saves bootstrap password log line to BootstrapPassword
     cat dockerpassword.txt | grep -oP '(?<=Bootstrap Password: )[^ ]*' > ~/bootstrappassword
-    export AWS_KEY_ID: ${{ var.TF_VAR_AWS_KEY_ID }}
-    export AWS_SECRET_KEY_ID: ${{ var.TF_VAR_AWS_SECRET_KEY_ID }}
-    export AWS_DEFAULT_OUTPUT: ${{ var.TF_VAR_AWS_DEFAULT_OUTPUT }}
-    export AWS_REGION: 'us-east-2'
+    export AWS_KEY_ID= ${{ var.TF_VAR_AWS_KEY_ID }}
+    export AWS_SECRET_KEY_ID= ${{ var.TF_VAR_AWS_SECRET_KEY_ID }}
+    export AWS_DEFAULT_OUTPUT= ${{ var.TF_VAR_AWS_DEFAULT_OUTPUT }}
+    export AWS_REGION= 'us-east-2'
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     sudo apt install unzip
     unzip awscliv2.zip
