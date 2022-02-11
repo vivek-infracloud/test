@@ -23,8 +23,16 @@ resource "aws_instance" "ec2-instance" {
     #!/bin/bash
     curl https://releases.rancher.com/install-docker/20.10.sh | sh
     sudo chmod 777 /var/run/docker.sock
+    #Install Rancher
     docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:${var.rancher_version}
+    #Saves bootstrap password log line to dockerpassword.txt
     docker logs $(docker ps --format '{{.Names}}') 2>&1 | grep "Bootstrap Password" > dockerpassword.txt
+    #Saves bootstrap password log line to BootstrapPassword
     cat dockerpassword.txt | grep -oP '(?<=Bootstrap Password: )[^ ]*' > bootstrappassword
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    
+    aws ec2 describe-instances --region us-east-2 --filters "Name=tag:Name,Values=vivek-rancher-Server" | grep -i publicipaddress | cut -d ":" -f 2 | cut -c 3-15 > server_url
   EOF
 }
