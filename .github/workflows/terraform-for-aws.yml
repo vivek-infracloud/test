@@ -42,13 +42,12 @@ jobs:
         run: terraform plan -out=./terraform-file.tfstate
         continue-on-error: true
         
-#      - name: Terraform Plan Status
-#        if: steps.plan.outcome == 'failure'
-#        run: exit 1
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
         
       - name: Terraform Apply ./terraform-file.tfstate
         id: apply
- #       if: github.event_name == 'push'
         run: terraform apply -auto-approve
         
    
