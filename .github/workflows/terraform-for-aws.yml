@@ -22,7 +22,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ID }}
       PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
       AWS_REGION: 'us-east-2'
-      TF_VAR_rancher_version : ${{ github.event.inputs.TF_VAR_rancher_version }}
+      TF_VAR_rancher_version : ${{ github.event.inputs.rancher_version }}
       
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
