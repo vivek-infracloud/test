@@ -31,6 +31,7 @@ resource "aws_instance" "ec2-instance" {
     #Saves bootstrap password log line to BootstrapPassword
     cat dockerpassword.txt | grep -oP '(?<=Bootstrap Password: )[^ ]*' > bootstrappassword
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    sudo apt install unzip
     unzip awscliv2.zip
     sudo ./aws/install
     aws --version
