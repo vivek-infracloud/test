@@ -25,3 +25,7 @@ variable "vpc_security_group_id_for_ec2" {
   description = "Security group to be attached to the EC2 instance"
   default     = "sg-c42018a9"
 }
+
+variable "rancher_version" {
+  description = "Rancher version to be installed"
+}
