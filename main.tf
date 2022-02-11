@@ -27,9 +27,9 @@ resource "aws_instance" "ec2-instance" {
     #Install Rancher
     docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:${var.rancher_version}
     #Saves bootstrap password log line to dockerpassword.txt
-    docker logs $(docker ps --format '{{.Names}}') 2>&1 | grep "Bootstrap Password" > dockerpassword.txt
+    docker logs $(docker ps --format '{{.Names}}') 2>&1 | grep "Bootstrap Password" > ~/dockerpassword.txt
     #Saves bootstrap password log line to BootstrapPassword
-    cat dockerpassword.txt | grep -oP '(?<=Bootstrap Password: )[^ ]*' > bootstrappassword
+    cat dockerpassword.txt | grep -oP '(?<=Bootstrap Password: )[^ ]*' > ~/bootstrappassword
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     sudo apt install unzip
     unzip awscliv2.zip
