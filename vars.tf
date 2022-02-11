@@ -29,3 +29,19 @@ variable "vpc_security_group_id_for_ec2" {
 variable "rancher_version" {
   description = "Rancher version to be installed"
 }
+
+variable "AWS_KEY_ID" {
+  description = "AWS KEY ID"
+}
+
+variable "AWS_SECRET_KEY" {
+  description = "SECRET KEY ID"
+}
+
+variable "AWS_REGION" {
+  description = "AWS REGION"
+}
+
+variable "AWS_DEFAULT_OUTPUT" {
+  description = "AWS DEFAULT OUTPUT"
+}
