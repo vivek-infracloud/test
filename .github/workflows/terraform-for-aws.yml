@@ -33,6 +33,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1.2.1
         with:
           rancher_version: ${{ github.event.inputs.TF_VAR_rancher_version }}
+          args: '-var-file="dev.tfvars"'
         
       - name: Terraform Init
         id: init
