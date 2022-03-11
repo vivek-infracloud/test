@@ -1,5 +1,5 @@
 variable "name" {
-  default = "vivek-rancher-Server"
+  description = "AWS Instance name tag"
 }
 
 variable "ami" {
